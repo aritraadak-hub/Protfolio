@@ -1,0 +1,397 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-navbar: #FFFFFF;
+
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+
+    --purple: #8B5CF6;
+    --blue: #3B82F6;
+    --cyan: #06B6D4;
+    --emerald: #10B981;
+    --amber: #F59E0B;
+    --pink: #EC4899;
+
+    --status-success: #22C55E;
+    --status-warning: #F59E0B;
+    --status-error: #EF4444;
+    --status-info: #3B82F6;
+
+    --border: #E2E8F0;
+    --divider: #E5E7EB;
+    --hover: #F1F5F9;
+  }
+
+  .dark {
+    --bg-primary: #050816;
+    --bg-secondary: #0D1428;
+    --bg-card: #0F1A33;
+    --bg-navbar: #080B1A;
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+
+    --purple: #8B5CF6;
+    --blue: #3B82F6;
+    --cyan: #22D3EE;
+    --emerald: #34D399;
+    --amber: #FBBF24;
+    --pink: #EC4899;
+
+    --status-success: #22C55E;
+    --status-warning: #F59E0B;
+    --status-error: #EF4444;
+    --status-info: #3B82F6;
+
+    --border: #1F2937;
+    --divider: #1E293B;
+    --hover: #1A2442;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    overflow-x: hidden;
+    touch-action: pan-y;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-heading {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F1F5F9;
+  }
+
+  :where(.dark, .dark *) ::-webkit-scrollbar-track,
+  .dark ::-webkit-scrollbar-track {
+    background: #050816;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 9999px;
+  }
+
+  :where(.dark, .dark *) ::-webkit-scrollbar-thumb,
+  .dark ::-webkit-scrollbar-thumb {
+    background: #1F2937;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8B5CF6;
+  }
+}
+
+/* Optimized horizontal journey timeline track */
+.journey-hscroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+}
+
+.journey-hscroll::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Animations and glow effects */
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 5s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 35s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Clean Light Scattering & Ambient Glow Design */
+.hero-scatter-purple-dark {
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.24) 0%,
+    rgba(139, 92, 246, 0.12) 35%,
+    rgba(139, 92, 246, 0.05) 55%,
+    transparent 72%
+  );
+  filter: blur(35px);
+}
+
+.hero-scatter-purple-light {
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.12) 0%,
+    rgba(139, 92, 246, 0.06) 35%,
+    rgba(139, 92, 246, 0.02) 55%,
+    transparent 72%
+  );
+  filter: blur(35px);
+}
+
+.hero-scatter-blue-dark {
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.20) 0%,
+    rgba(59, 130, 246, 0.10) 40%,
+    rgba(59, 130, 246, 0.03) 60%,
+    transparent 75%
+  );
+  filter: blur(40px);
+}
+
+.hero-scatter-blue-light {
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.09) 0%,
+    rgba(59, 130, 246, 0.04) 40%,
+    rgba(59, 130, 246, 0.01) 60%,
+    transparent 75%
+  );
+  filter: blur(40px);
+}
+
+.hero-scatter-indigo-dark {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(99, 102, 241, 0.16) 0%,
+    rgba(139, 92, 246, 0.08) 45%,
+    transparent 75%
+  );
+  filter: blur(50px);
+}
+
+.hero-scatter-indigo-light {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(99, 102, 241, 0.08) 0%,
+    rgba(139, 92, 246, 0.04) 45%,
+    transparent 75%
+  );
+  filter: blur(50px);
+}
+
+.hero-scatter-cyan-dark {
+  background: radial-gradient(
+    circle,
+    rgba(34, 211, 238, 0.08) 0%,
+    rgba(34, 211, 238, 0.02) 50%,
+    transparent 70%
+  );
+  filter: blur(35px);
+}
+
+.hero-scatter-cyan-light {
+  background: radial-gradient(
+    circle,
+    rgba(6, 182, 212, 0.05) 0%,
+    rgba(6, 182, 212, 0.01) 50%,
+    transparent 70%
+  );
+  filter: blur(35px);
+}
+
+.hero-scatter-streak-dark {
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(99, 102, 241, 0.08) 50%,
+    transparent 80%
+  );
+  filter: blur(35px);
+}
+
+.hero-scatter-streak-light {
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(99, 102, 241, 0.04) 50%,
+    transparent 80%
+  );
+  filter: blur(35px);
+}
+
+/* Light Scattering Stats Glass Card */
+.hero-scatter-stats-dark {
+  background: rgba(15, 26, 51, 0.52);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(139, 92, 246, 0.20);
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(139, 92, 246, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.hero-scatter-stats-light {
+  background: rgba(255, 255, 255, 0.60);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(139, 92, 246, 0.18);
+  box-shadow:
+    0 15px 35px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.60);
+}
+
+@keyframes lightDriftPurple {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(8px, -6px, 0) scale(1.04);
+  }
+}
+
+@keyframes lightDriftBlue {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-6px, 8px, 0) scale(1.03);
+  }
+}
+
+.animate-scatter-purple {
+  animation: lightDriftPurple 14s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-scatter-blue {
+  animation: lightDriftBlue 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-slow,
+  .animate-pulse-glow,
+  .animate-float,
+  .animate-scatter-purple,
+  .animate-scatter-blue {
+    animation: none !important;
+  }
+}
+
+/* Figma-Grade Glassmorphism & Shadow Utilities */
+.glass-panel {
+  background: rgba(15, 26, 51, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid #1F2937;
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid #E2E8F0;
+}
+
+.glow-purple {
+  box-shadow: 0 0 50px -10px rgba(139, 92, 246, 0.3);
+}
+
+.glow-purple-sm {
+  box-shadow: 0 0 25px -5px rgba(139, 92, 246, 0.25);
+}
+
+.glow-blue {
+  box-shadow: 0 0 50px -10px rgba(59, 130, 246, 0.3);
+}
+
+/* Text Gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtle dot grid pattern */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image:
+    radial-gradient(circle, rgba(148, 163, 184, 0.22) 1px, transparent 1px);
+}
+
+:where(.dark, .dark *) .bg-grid-pattern,
+.dark .bg-grid-pattern {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
